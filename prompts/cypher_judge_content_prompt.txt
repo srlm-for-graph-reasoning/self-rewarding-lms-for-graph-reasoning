@@ -1,0 +1,6 @@
+Schema:
+{schema}
+
+Question: {question}
+Generated Cypher: {generated_cypher}
+Execution Output: {db_output}

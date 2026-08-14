@@ -1,0 +1,643 @@
+id,question,db_name,score1,score2,score3,score4,score5,out1,out2,out3,out4,out5
+instance_id_45230,Which suppliers have products listed in more than three categories?,northwind,"MATCH (s:Supplier)--(c:Category) 
+WHERE count(c) > 3 
+RETURN s.companyName","MATCH (s:Supplier)-[:DELIVERS_TO_CATEGORY]->(c:Category)
+WITH s, count(c) AS catCount
+WHERE catCount > 3
+RETURN s.companyName","MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WITH s, count(c) AS catCount
+WHERE catCount > 3
+RETURN s.companyName","MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WITH s, count(DISTINCT c) AS catCount
+WHERE catCount > 3
+RETURN s","MATCH (s:Supplier)-[:SUPPLIES]->(p:Product)-[:PART_OF]->(c:Category)
+WITH s, count(DISTINCT c) AS catCount
+WHERE catCount > 3
+RETURN s.companyName","[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid use of aggregating function count(...) in this context (line 2, column 7 (offset: 40))
+""WHERE count(c) > 3""
+       ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Invalid use of aggregating function count(...) in this context (line 2, column 7 (offset: 40))
+""WHERE count(c) > 3""
+       ^}",[Empty Result Set],"s.companyName: ""Pavlova""
+s.companyName: ""Plutzer Lebensmittelgroßmärkte AG""
+s.companyName: ""New Orleans Cajun Delights""
+s.companyName: ""Specialty Biscuits""
+","s: (:Supplier {country: ""3058"", address: ""Marketing Manager"", supplierID: ""7"", contactTitle: ""Ian Devling"", phone: ""Australia"", city: ""74 Rose St. Moonie Ponds"", contactName: "" Ltd."", postalCode: ""Victoria"", companyName: ""Pavlova"", fax: ""(03) 444-2343"", region: ""Melbourne"", homePage: ""(03) 444-6588""})
+s: (:Supplier {country: ""Germany"", contactTitle: ""International Marketing Mgr."", address: ""Bogenallee 51"", supplierID: ""12"", phone: ""(069) 992755"", city: ""Frankfurt"", contactName: ""Martin Bein"", companyName: ""Plutzer Lebensmittelgroßmärkte AG"", postalCode: ""60439"", fax: ""NULL"", region: ""NULL"", homePage: ""Plutzer (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/plutzer.htm#""})
+","s.companyName: ""Pavlova""
+s.companyName: ""Plutzer Lebensmittelgroßmärkte AG""
+"
+instance_id_44952,What are the different types of companies listed under the 'Other' node category?,offshoreleaks,"MATCH (c:Company)-[:LISTED_UNDER]->(o:OtherCategory) 
+RETURN c.type","MATCH (o:Other) 
+RETURN DISTINCT o.company_type","MATCH (o:Other) 
+RETURN o.type","MATCH (o:Other) 
+RETURN DISTINCT o.type","MATCH (o:Other) 
+WHERE o.type IS NOT NULL 
+RETURN DISTINCT o.type AS company_type",[Empty Result Set],"o.company_type: null
+","o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""SOLE OWNERSHIP""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""LIMITED LIABILITY COMPANY""
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+o.type: null
+
+... [TRUNCATED] Reached row limit (250/250).","o.type: ""LIMITED LIABILITY COMPANY""
+o.type: ""SOLE OWNERSHIP""
+o.type: null
+o.type: ""FOREIGN FORMED CORPORATION""
+","company_type: ""LIMITED LIABILITY COMPANY""
+company_type: ""SOLE OWNERSHIP""
+company_type: ""FOREIGN FORMED CORPORATION""
+"
+instance_id_43953,How many versions of the software 'RHEL' exist?,network,"MATCH (n:OperatingSystem {name: 'RHEL'})-[r:RELEASES]->(v:Version)
+RETURN count(v)","MATCH (s:Software {name: 'RHEL'})-[:HAS_VERSION]->(v:Version)
+RETURN count(v)","MATCH (s:Software {name: 'RHEL'})<-[:VERSION]-(v:Version)
+RETURN count(v)","MATCH (s:Software {name: 'RHEL'})-[:VERSION]->(v:Version)
+RETURN v","MATCH (s:Software {name: 'RHEL'})-[:VERSION]->(v:Version)
+RETURN count(v) AS totalVersions","count(v): 0
+","count(v): 0
+","count(v): 0
+","v: (:Version {name: ""7.3""})
+v: (:Version {name: ""7.2""})
+v: (:Version {name: ""7.1""})
+","totalVersions: 3
+"
+instance_id_43633,List the top 5 games played by streams with over 1 million total views.,twitch,SELECT game_name FROM streams WHERE total_views > 1000000 ORDER BY views DESC LIMIT 5;,"MATCH (u:User)-[:WATCHED]->(g:Game)
+WHERE g.views > 1000000
+RETURN g.title
+LIMIT 5","MATCH (s:Stream)-[:PLAYS]->(g:Game)
+WHERE s.total_view_count > 1000000
+RETURN g.name
+LIMIT 5","MATCH (s:Stream)-[:PLAYS]->(g:Game)
+WHERE s.total_view_count > 1000000
+RETURN g, count(s) AS stream_count
+ORDER BY stream_count DESC
+LIMIT 5","MATCH (s:Stream)-[:PLAYS]->(g:Game)
+WHERE s.total_view_count > 1000000
+RETURN g.name AS game_name, count(s) AS total_streams
+ORDER BY total_streams DESC
+LIMIT 5","[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""USING""
+  ""WITH"" (line 1, column 1 (offset: 0))
+""SELECT game_name FROM streams WHERE total_views > 1000000 ORDER BY views DESC LIMIT 5;""
+ ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""U
+... [ERROR MESSAGE TRUNCATED]",[Empty Result Set],"g.name: ""Grand Theft Auto V""
+g.name: ""DayZ""
+g.name: ""Call of Duty: Warzone""
+g.name: ""Apex Legends""
+g.name: ""Overwatch""
+","g: (:Game {name: ""Just Chatting""}) | stream_count: 547
+g: (:Game {name: ""Resident Evil Village""}) | stream_count: 370
+g: (:Game {name: ""Grand Theft Auto V""}) | stream_count: 225
+g: (:Game {name: ""League of Legends""}) | stream_count: 210
+g: (:Game {name: ""Fortnite""}) | stream_count: 148
+","game_name: ""Just Chatting"" | total_streams: 547
+game_name: ""Resident Evil Village"" | total_streams: 370
+game_name: ""Grand Theft Auto V"" | total_streams: 225
+game_name: ""League of Legends"" | total_streams: 210
+game_name: ""Fortnite"" | total_streams: 148
+"
+instance_id_41185,Which 3 countries have the most entities linked as beneficiaries in filings?,fincen,MATCH (f:Filing) RETURN f LIMIT 3,"MATCH (c:Country)-[:HAS_BENEFICIARY]->(f:Filing) RETURN c.name, COUNT(f) AS count ORDER BY count DESC LIMIT 3","MATCH (f:Filing)-->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c.name, COUNT(DISTINCT e) AS entities ORDER BY entities DESC LIMIT 3","MATCH (f:Filing)-[:BENEFITS]->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c, COUNT(DISTINCT e) AS num_entities ORDER BY num_entities DESC LIMIT 3","MATCH (:Filing)-[:BENEFITS]->(e:Entity)-[:COUNTRY]->(c:Country) RETURN c.name, COUNT(DISTINCT e) AS num_entities ORDER BY num_entities DESC LIMIT 3","f: (:Filing {end_date: ""Sep 25, 2015"", icij_sar_id: ""3297"", amount: 56898523.47, beneficiary_lng: ""-2"", beneficiary_iso: ""GBR"", begin_date: ""Mar 25, 2015"", originator_bank: ""CIMB Bank Berhad"", beneficiary_lat: ""54"", begin_date_format: ""2015-03-25T00:00:00Z"", beneficiary_bank_id: ""barclays-bank-plc-london-england-gbr"", originator_iso: ""SGP"", end_date_format: ""2015-09-25T00:00:00Z"", origin_lat: ""1.3667"", number: 68, filer_org_name: ""The Bank of New York Mellon Corp."", originator_bank_country: ""Singapore"", beneficiary_bank: ""Barclays Bank Plc"", filer_org_name_id: ""the-bank-of-new-york-mellon-corp"", beneficiary_bank_country: ""United Kingdom"", end: 2015-09-25T00:00:00.000000000+00:00, origin_lng: ""103.8"", originator_bank_id: ""cimb-bank-berhad"", id: ""223254"", begin: 2015-03-25T00:00:00.000000000+00:00})
+f: (:Filing {end_date: ""Sep 25, 2015"", icij_sar_id: ""3297"", amount: 116238361.25, beneficiary_lng: ""-2"", beneficiary_iso: ""GBR"", begin_date: ""Mar 30, 2015"", originator_bank: ""CIMB Bank Berhad"", beneficiary_lat: ""54"", begin_date_format: ""2015-03-30T00:00:00Z"", beneficiary_bank_id: ""barclays-bank-plc-london-england-gbr"", originator_iso: ""SGP"", end_date_format: ""2015-09-25T00:00:00Z"", origin_lat: ""1.3667"", number: 118, filer_org_name: ""The Bank of New York Mellon Corp."", originator_bank_country: ""Singapore"", beneficiary_bank: ""Barclays Bank Plc"", filer_org_name_id: ""the-bank-of-new-york-mellon-corp"", beneficiary_bank_country: ""United Kingdom"", end: 2015-09-25T00:00:00.000000000+00:00, origin_lng: ""103.8"", originator_bank_id: ""cimb-bank-berhad"", id: ""223255"", begin: 2015-03-30T00:00:00.000000000+00:00})
+f: (:Filing {end_date: ""Jul 5, 2012"", icij_sar_id: ""2924"", amount: 5000, beneficiary_lng: ""15"", beneficiary_iso: ""SWE"", begin_date: ""Jul 5, 2012"", originator_bank: ""Barclays Bank Plc Ho UK"", beneficiary_lat: ""62"", begin_date_format: ""2012-07-05T00:00:00Z"", end_date_format: ""2012-07-05T00:00:00Z"", originator_iso: ""GBR"", beneficiary_bank_id: ""skandinaviska-enskilda-banken-stockholm-sweden-swe"", origin_lat: ""54"", filer_org_name: ""The Bank of New York Mellon Corp."", originator_bank_country: ""United Kingdom"", beneficiary_bank: ""Skandinaviska Enskilda Banken"", filer_org_name_id: ""the-bank-of-new-york-mellon-corp"", beneficiary_bank_country: ""Sweden"", end: 2012-07-05T00:00:00.000000000+00:00, origin_lng: ""-2"", originator_bank_id: ""barclays-bank-plc-ho-uk"", id: ""223258"", begin: 2012-07-05T00:00:00.000000000+00:00})
+",[Empty Result Set],"c.name: ""United States"" | entities: 243
+c.name: ""Russia"" | entities: 243
+c.name: ""Switzerland"" | entities: 184
+","c: (:Country {code: ""USA"", name: ""United States"", location: WGS84Point(-97.0, 38.0), tld: ""US""}) | num_entities: 148
+c: (:Country {code: ""CHE"", name: ""Switzerland"", location: WGS84Point(8.0, 47.0), tld: ""CH""}) | num_entities: 98
+c: (:Country {code: ""RUS"", name: ""Russia"", location: WGS84Point(100.0, 60.0), tld: ""RU""}) | num_entities: 94
+","c.name: ""United States"" | num_entities: 148
+c.name: ""Switzerland"" | num_entities: 98
+c.name: ""Russia"" | num_entities: 94
+"
+instance_id_42696,Which 5 actors have the most roles listed as uncredited?,recommendations,"SELECT a.name, COUNT(r) 
+FROM Actor a 
+JOIN PLAYED_IN r ON a.id = r.actor_id 
+WHERE r.status = 'uncredited'
+GROUP BY a.name 
+ORDER BY COUNT(r) DESC 
+LIMIT 5","MATCH (a:Actor)-[r:ACTED_IN {uncredited: true}]->(m:Movie)
+RETURN a.name, count(r) AS rolesCount
+ORDER BY rolesCount DESC
+LIMIT 5","MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie)
+WHERE r.role = 'uncredited'
+RETURN a.name, count(r) AS uncreditedCount
+ORDER BY uncreditedCount DESC
+LIMIT 5","MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie)
+WHERE toLower(r.role) CONTAINS 'uncredited'
+RETURN a, count(r) AS uncreditedCount
+ORDER BY uncreditedCount DESC
+LIMIT 5","MATCH (a:Actor)-[r:ACTED_IN]->(:Movie)
+WHERE toLower(r.role) CONTAINS 'uncredited'
+RETURN a.name, count(r) AS uncreditedCount
+ORDER BY uncreditedCount DESC
+LIMIT 5","[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""USING""
+  ""WITH"" (line 1, column 1 (offset: 0))
+""SELECT a.name, COUNT(r)""
+ ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""USING""
+  ""WITH"" (line 1, column 1 (offset: 0))
+""SELECT a.name, C
+... [ERROR MESSAGE TRUNCATED]",[Empty Result Set],[Empty Result Set],"a: (:Person:Actor {bornIn: ""Bridgeport, Connecticut, U.S.A."", tmdbId: ""5460"", imdbId: ""0143314"", born: 1916-05-16, name: ""Adriana Caselotti"", died: 1997-01-19, poster: ""https://image.tmdb.org/t/p/w440_and_h660_face/7nOCtRQnfH6RQ39IZBDffIadgR7.jpg"", url: ""https://themoviedb.org/person/5460""}) | uncreditedCount: 1
+a: (:Person:Actor {tmdbId: ""5458"", imdbId: ""0118081"", name: ""Stuart Buchanan"", url: ""https://themoviedb.org/person/5458""}) | uncreditedCount: 1
+a: (:Person:Actor {bornIn: ""Syracuse, New York, USA"", tmdbId: ""5457"", imdbId: ""0041165"", born: 1878-05-02, name: ""Roy Atwell"", died: 1962-02-06, poster: ""https://image.tmdb.org/t/p/w440_and_h660_face/huVgxMlWdN6VvIzfiMLEZi4Zlbu.jpg"", url: ""https://themoviedb.org/person/5457""}) | uncreditedCount: 1
+a: (:Person:Actor {bornIn: ""San Francisco, California, USA"", tmdbId: ""33923"", imdbId: ""0000305"", born: 1908-05-30, name: ""Mel Blanc"", bio: ""Mel Blanc (May 30, 1908 – July 10, 1989) was an American voice actor and comedian. \n\nAlthough he began his nearly six-decade-long career performing in radio commercials, Blanc is best remembered for his work with Warner Bros.  during the \""Golden Age of American animation\"" (and later for Hanna-Barbera television productions) as the voice of such well-known characters as Bugs Bunny, Daffy Duck, Porky Pig, Sylvester the Cat, Tweety Bird, Foghorn Leghorn, Yosemite Sam, Wile E..."", died: 1989-07-10, poster: ""https://image.tmdb.org/t/p/w440_and_h660_face/sicAwqCq5PLCj12KlGWFKJLr1Zv.jpg"", url: ""https://themoviedb.org/person/33923""}) | uncreditedCount: 1
+a: (:Person:Actor {bornIn: ""Nashville, Tennessee, U.S."", tmdbId: ""288940"", imdbId: ""0479164"", born: 1872-11-07, name: ""Lucille La Verne"", died: 1945-03-04, poster: ""https://image.tmdb.org/t/p/w440_and_h660_face/6L3j9U9IkxJhatF8ASsO3PtNZUN.jpg"", url: ""https://themoviedb.org/person/288940""}) | uncreditedCount: 1
+","a.name: ""Adriana Caselotti"" | uncreditedCount: 1
+a.name: ""Stuart Buchanan"" | uncreditedCount: 1
+a.name: ""Roy Atwell"" | uncreditedCount: 1
+a.name: ""Mel Blanc"" | uncreditedCount: 1
+a.name: ""Lucille La Verne"" | uncreditedCount: 1
+"
+instance_id_43218,Who are the top 5 most followed users that 'Neo4j' follows?,twitter,"SELECT user.name 
+FROM User u 
+JOIN Follows f ON u.id = f.follower_id 
+WHERE u.name = 'Neo4j' 
+ORDER BY user.followers DESC 
+LIMIT 5;","MATCH (u:User {name: 'Neo4j'})-[:IS_FOLLOWING]->(f:User)
+RETURN f.name
+ORDER BY f.follower_count DESC
+LIMIT 5;","MATCH (u:User {name: 'Neo4j'})<-[:FOLLOWS]-(f:User)
+RETURN f.name, f.followers
+ORDER BY f.followers DESC
+LIMIT 5;","MATCH (u:User {name: 'Neo4j'})-[:FOLLOWS]->(f:User)
+RETURN f
+ORDER BY f.followers DESC
+LIMIT 5;","MATCH (u:User {name: 'Neo4j'})-[:FOLLOWS]->(f:User)
+RETURN f.name AS Name, f.screen_name AS Handle, f.followers AS FollowerCount
+ORDER BY f.followers DESC
+LIMIT 5;","[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""USING""
+  ""WITH"" (line 1, column 1 (offset: 0))
+""SELECT user.name""
+ ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Invalid input 'SELECT': expected
+  ""ALTER""
+  ""CALL""
+  ""CREATE""
+  ""DEALLOCATE""
+  ""DELETE""
+  ""DENY""
+  ""DETACH""
+  ""DROP""
+  ""DRYRUN""
+  ""ENABLE""
+  ""FOREACH""
+  ""GRANT""
+  ""LOAD""
+  ""MATCH""
+  ""MERGE""
+  ""NODETACH""
+  ""OPTIONAL""
+  ""REALLOCATE""
+  ""REMOVE""
+  ""RENAME""
+  ""RETURN""
+  ""REVOKE""
+  ""SET""
+  ""SHOW""
+  ""START""
+  ""STOP""
+  ""TERMINATE""
+  ""UNWIND""
+  ""USE""
+  ""USING""
+  ""WITH"" (line 1, column 1 (offset: 0))
+""SELECT user.name""
+ ^}",[Empty Result Set],"f.name: ""Twitter Verified"" | f.followers: 3159351
+f.name: ""MarQuis Trill • Youngest Black Billionaire"" | f.followers: 2137734
+f.name: ""Soledad O'Brien"" | f.followers: 1345269
+f.name: ""Larry Kim"" | f.followers: 761241
+f.name: ""Ammar Mohammed"" | f.followers: 631106
+","f: (:User {followers: 59391716, screen_name: ""Twitter"", following: 10, name: ""Twitter"", statuses: 14213, profile_image_url: ""http://pbs.twimg.com/profile_images/1354479643882004483/Btnfm47p_normal.jpg"", location: ""everywhere"", url: ""https://t.co/TAXQpsHa5X""})
+f: (:User {followers: 49094141, screen_name: ""elonmusk"", following: 103, name: ""Elon Musk"", statuses: 13812, profile_image_url: ""http://pbs.twimg.com/profile_images/1364491704817098753/V22-Luf7_normal.jpg"", location: """"})
+f: (:User {followers: 44944849, screen_name: ""NASA"", following: 204, name: ""NASA"", statuses: 64571, profile_image_url: ""http://pbs.twimg.com/profile_images/1321163587679784960/0ZxKlEKB_normal.jpg"", location: ""Pale Blue Dot"", url: ""https://t.co/HMJJbimQpV""})
+f: (:User {followers: 22838374, screen_name: ""Google"", following: 291, name: ""Google"", statuses: 130618, profile_image_url: ""http://pbs.twimg.com/profile_images/1343584679664873479/Xos3xQfk_normal.jpg"", location: ""Mountain View, CA"", url: ""https://t.co/85oGSVSdM2""})
+f: (:User {followers: 16684486, screen_name: ""Forbes"", following: 5184, name: ""Forbes"", statuses: 275560, profile_image_url: ""http://pbs.twimg.com/profile_images/1106672424605630465/IC9ipKIt_normal.png"", location: ""New York, NY"", url: ""http://t.co/KH6EtekF5q""})
+","Name: ""Twitter"" | Handle: ""Twitter"" | FollowerCount: 59391716
+Name: ""Elon Musk"" | Handle: ""elonmusk"" | FollowerCount: 49094141
+Name: ""NASA"" | Handle: ""NASA"" | FollowerCount: 44944849
+Name: ""Google"" | Handle: ""Google"" | FollowerCount: 22838374
+Name: ""Forbes"" | Handle: ""Forbes"" | FollowerCount: 16684486
+"
+instance_id_39983,Who are the actors that acted in 'The Matrix'?,movies,MATCH film.name == 'The Matrix' RETURN name,MATCH (a:Actor)-[:PLAYED_IN]->(m:Film {name: 'The Matrix'}) RETURN a.name,MATCH (m:Movie {title: 'The Matrix'})-[:ACTED_IN]->(p:Person) RETURN p,"MATCH (p:Person)-[:ACTED_IN]->(m:Movie {title: 'The Matrix'}) RETURN p.name, m",MATCH (p:Person)-[:ACTED_IN]->(m:Movie {title: 'The Matrix'})\nRETURN p.name AS actor_name,"[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'film': expected ""("", ""ALL"", ""ANY"" or ""SHORTEST"" (line 1, column 7 (offset: 6))
+""MATCH film.name == 'The Matrix' RETURN name""
+       ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Invalid input 'film': expected ""("", ""ALL"", ""ANY"" or ""SHORTEST"" (line 1, column 7 (offset: 6))
+""MATCH film.name == 'The Matrix' RETURN name""
+       ^}",[Empty Result Set],[Empty Result Set],"p.name: ""Emil Eifrem"" | m: (:Movie {tagline: ""Welcome to the Real World"", title: ""The Matrix"", released: 1999})
+p.name: ""Hugo Weaving"" | m: (:Movie {tagline: ""Welcome to the Real World"", title: ""The Matrix"", released: 1999})
+p.name: ""Laurence Fishburne"" | m: (:Movie {tagline: ""Welcome to the Real World"", title: ""The Matrix"", released: 1999})
+p.name: ""Carrie-Anne Moss"" | m: (:Movie {tagline: ""Welcome to the Real World"", title: ""The Matrix"", released: 1999})
+p.name: ""Keanu Reeves"" | m: (:Movie {tagline: ""Welcome to the Real World"", title: ""The Matrix"", released: 1999})
+","actor_name: ""Emil Eifrem""
+actor_name: ""Hugo Weaving""
+actor_name: ""Laurence Fishburne""
+actor_name: ""Carrie-Anne Moss""
+actor_name: ""Keanu Reeves""
+"
+instance_id_34297,What is the average runtime of romantic comedies?,eoflix,"MATCH (m:RomanticComedy) 
+RETURN average(m.runtime)","MATCH (m:Movie)-[:HAS_GENRE]->(g:Genre {name: 'Romantic Comedy'}) 
+RETURN avg(m.duration)","MATCH (m:Movie)-[:IN_GENRE]->(g:Genre) 
+WHERE g.name = 'Romance' OR g.name = 'Comedy' 
+RETURN avg(m.runtime)","MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name: 'Romance'}), 
+      (m)-[:IN_GENRE]->(:Genre {name: 'Comedy'}) 
+RETURN avg(m.runtime)","MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name: 'Romance'}), 
+      (m)-[:IN_GENRE]->(:Genre {name: 'Comedy'}) 
+RETURN avg(m.runtime) AS average_runtime","[Execution Failed]: {neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Unknown function 'average' (line 2, column 8 (offset: 33))
+""RETURN average(m.runtime)""
+        ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unknown function 'average' (line 2, column 8 (offset: 33))
+""RETURN average(m.runtime)""
+        ^}","avg(m.duration): null
+","avg(m.runtime): 102.34994829369198
+","avg(m.runtime): 103.20243902439026
+","average_runtime: 103.20243902439026
+"
